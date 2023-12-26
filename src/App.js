@@ -14,6 +14,7 @@ import {
 import Registration from "./components/Registration";
 import UserContext from "./contexts/UserContext"; // Импортируйте ваш контекст
 import Login from "./components/Login";
+import PaymentForm from "./components/PaymentForm";
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
             <Route path="/search/:searchTerm" element={<SearchFeed />} />
             <Route path="/register" element={<Registration />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/premium" element={<PaymentForm />} />
           </Routes>
         </Box>
       </UserContext>
