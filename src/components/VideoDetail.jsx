@@ -3,10 +3,12 @@ import { Link, useParams } from "react-router-dom";
 import ReactPlayer from "react-player";
 import { Typography, Box, Stack } from "@mui/material";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
-
+import { IoHeartDislikeOutline } from "react-icons/io5";
+import { BiAddToQueue } from "react-icons/bi";
+import { FcLike } from "react-icons/fc";
 import { Videos, Loader } from "./";
 import { fetchFromAPI } from "../utils/fetchFromAPI";
-
+import { FaComments } from "react-icons/fa";
 const VideoDetail = () => {
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState(null);
@@ -26,7 +28,6 @@ const VideoDetail = () => {
 
   const {
     snippet: { title, channelId, channelTitle },
-    statistics: { viewCount, likeCount },
   } = videoDetail;
 
   return (
@@ -58,13 +59,15 @@ const VideoDetail = () => {
                   />
                 </Typography>
               </Link>
-              <Stack direction="row" gap="20px" alignItems="center">
-                <Typography variant="body1" sx={{ opacity: 0.7 }}>
-                  {parseInt(viewCount).toLocaleString()} views
-                </Typography>
-                <Typography variant="body1" sx={{ opacity: 0.7 }}>
-                  {parseInt(likeCount).toLocaleString()} likes
-                </Typography>
+              <Stack
+                direction="row"
+                gap="20px"
+                alignItems="center"
+                className="likesAndCommentsLogos">
+                <IoHeartDislikeOutline size={24} />
+                <FcLike size={32} />
+                <FaComments size={20} />
+                <BiAddToQueue size={20} />
               </Stack>
             </Stack>
           </Box>
