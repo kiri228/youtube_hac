@@ -34,6 +34,11 @@ a {
   color: white !important;
 }
 
+.likesAndCommentsLogos {
+  display: flex;
+  position: relative;
+}
+
 .react-player {
   height: 77vh !important;
   width: 100% !important;
