@@ -1,20 +1,41 @@
+// App.js
+
+import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Box } from '@mui/material';
+import { Box } from "@mui/material";
 
-import { ChannelDetail, VideoDetail, SearchFeed, Navbar, Feed } from './components';
+import {
+  ChannelDetail,
+  VideoDetail,
+  SearchFeed,
+  Navbar,
+  Feed,
+} from "./components";
+import Registration from "./components/Registration";
+import UserContext from "./contexts/UserContext"; // Импортируйте ваш контекст
+import Login from "./components/Login";
+import PaymentForm from "./components/PaymentForm";
 
-const App = () => (
-  <BrowserRouter>
-    <Box sx={{ backgroundColor: '#000' }}>
-      <Navbar />
-      <Routes>
-        <Route exact path='/' element={<Feed />} />
-        <Route path='/video/:id' element={<VideoDetail />} />
-        <Route path='/channel/:id' element={<ChannelDetail />} />
-        <Route path='/search/:searchTerm' element={<SearchFeed />} />
-      </Routes>
-    </Box>
-  </BrowserRouter>
-);
+const App = () => {
+  return (
+    <BrowserRouter>
+      <UserContext>
+        {/* Оборачиваем приложение в UserContext */}
+        <Box sx={{ backgroundColor: "#000" }}>
+          <Navbar />
+          <Routes>
+            <Route exact path="/" element={<Feed />} />
+            <Route path="/video/:id" element={<VideoDetail />} />
+            <Route path="/channel/:id" element={<ChannelDetail />} />
+            <Route path="/search/:searchTerm" element={<SearchFeed />} />
+            <Route path="/register" element={<Registration />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/premium" element={<PaymentForm />} />
+          </Routes>
+        </Box>
+      </UserContext>
+    </BrowserRouter>
+  );
+};
 
 export default App;
